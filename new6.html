@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Парні випадкові числа</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+.box {
+  border: 1px solid #000;
+  padding: 15px;
+  width: 380px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <p id="array"></p>
+  <p id="result"></p>
+</div>
+
+<script>
+let arr = [];
+let evenArr = [];
+
+for (let i = 0; i < 10; i++) {
+  let num = Math.floor(Math.random() * 100) + 1;
+  arr.push(num);
+
+  if (num % 2 === 0) {
+    evenArr.push(num);
+  }
+}
+
+document.getElementById("array").textContent =
+  "Згенерований масив: " + arr.join(", ");
+
+document.getElementById("result").textContent =
+  "Парні числа: " + evenArr.join(", ");
+</script>
+
+</body>
+</html>
