@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Пошук максимуму</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .box {
+            padding: 20px;
+            border: 1px solid #333;
+            width: 350px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            font-weight: bold;
+            color: #d9534f;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h3>Знайти найбільше число</h3>
+    <p>Введіть числа через кому:</p>
+    <input type="text" id="inputArray" placeholder="Наприклад: 12, 45, 3, 89">
+    <button onclick="findMax()">Знайти максимум</button>
+
+    <p id="displayArray"></p>
+    <p id="result"></p>
+</div>
+
+<script>
+function findMax() {
+    // 1. Отримуємо рядок з інпуту
+    let input = document.getElementById("inputArray").value;
+    
+    // 2. Перетворюємо рядок у масив чисел
+    // split(',') розбиває по комі, map(Number) перетворює текст у числа
+    let arr = input.split(',').map(num => Number(num.trim())).filter(num => !isNaN(num));
+
+    if (arr.length === 0) {
+        document.getElementById("result").textContent = "Будь ласка, введіть коректні числа!";
+        return;
+    }
+
+    // 3. Алгоритм пошуку максимуму (твій оригінальний код)
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    // 4. Виведення результату
+    document.getElementById("displayArray").textContent = "Ваш масив: [" + arr.join(", ") + "]";
+    document.getElementById("result").textContent = "Найбільше число: " + max;
+}
+</script>
+
+</body>
+</html>
